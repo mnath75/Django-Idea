@@ -1,0 +1,24 @@
+version: "3.9"
+   
+services:
+  db:
+    container_name: Django_Idea_db
+    image: postgres
+    ports:
+      - '5432'
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres  
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+  web:
+    container_name: Django_Idea_backend
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
