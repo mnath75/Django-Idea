@@ -10,5 +10,5 @@ urlpatterns = [
     path('dj-rest-auth/account-confirm-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
     path('password-reset/', PasswordResetView.as_view(), name='password-reset'),
     path('password-reset/confirm/', PasswordResetConfirmView.as_view(), name='password-reset-confirm'),
-    path('password-reset/confirm/<uidb64>/<token>/', TemplateView.as_view(), name='password_reset_confirm'), #dummy view
+    path('password-reset/confirm/<uidb64>/<token>/', TemplateView.as_view(template_name="index.html"), name='password_reset_confirm'), #dummy view
 ]
